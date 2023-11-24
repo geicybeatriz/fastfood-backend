@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id Int @id @default(autoincrement())
+  name String 
+  picture String 
+  price Float
+  description String
+  category Category
+  orders OrderItemDetails[] 
+
+  @@map("products")
+}
+
+enum Category {
+  drinks
+  side_dishes
+  snacks
+  desserts
+
+  @@map("categories")
+}
+
+model Additional{
+  id Int @id @default(autoincrement())
+  name String
+  description String
+  picture String
+  price Float
+  itemAdditional OrderItemAdditionals[]
+
+  @@map("additionals")
+}
+
+model Order {
+  id Int @id @default(autoincrement())
+  name String 
+  status Status @default(created)
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  itemDetails OrderItemDetails[]
+  amount Float
+
+  @@map("orders")
+}
+
+model OrderItemDetails{
+  id Int @id @default(autoincrement())
+  product Product @relation(fields: [productId], references: [id])
+  productId Int
+  order Order @relation(fields: [orderId], references: [id])
+  orderId Int
+  observations String?
+  quantity Int
+  itemAdditional OrderItemAdditionals[]
+
+  @@map("orderItemDetails")
+}
+
+model OrderItemAdditionals{
+  id Int @id @default(autoincrement())
+  additional Additional @relation(fields: [additionalId], references: [id])
+  additionalId Int
+  orderItemId Int
+  orderItem OrderItemDetails @relation(fields: [orderItemId],references: [id])
+
+  @@map("orderItemAdditionals")
+}
+
+enum Status {
+  created
+  cancelled
+  completed
+  preparing
+
+  @@map("status")
+}
