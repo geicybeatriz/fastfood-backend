@@ -1,3 +1,6 @@
-import app from "./app";
+import app from './app';
 
-app.listen(5000, () => console.log("success"));
+app.listen(5000, () => {
+  // eslint-disable-next-line no-console
+  console.log('success');
+});
