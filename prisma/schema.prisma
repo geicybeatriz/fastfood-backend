@@ -27,6 +27,7 @@ enum Category {
   side_dishes
   snacks
   desserts
+  combo
 
   @@map("categories")
 }
