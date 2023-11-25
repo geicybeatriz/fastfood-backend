@@ -1,11 +1,13 @@
 import { Product } from '@prisma/client';
-import productsRepository from 'repositories/productsRepository';
+import productsRepository from '../repositories/productsRepository';
 
 async function findAll() {
   const products: Product[] = await productsRepository.findAll();
   return products;
 }
 
-export default {
+const productsService = {
   findAll,
 };
+
+export default productsService;
