@@ -1,3 +1,5 @@
+import { Category } from '@prisma/client';
+
 const products = [
   {
     name: 'BBQ Chicken Sandwich',
@@ -5,7 +7,7 @@ const products = [
     price: 10.8,
     description:
       'Peito de frango grelhado com molho barbecue, queijo provolone derretido, cebolas caramelizadas e alface em um pão de ciabatta',
-    category: 'snacks',
+    category: Category.snacks,
   },
   {
     name: 'Classic Burger',
@@ -14,7 +16,7 @@ const products = [
     price: 15.9,
     description:
       'Hambúrguer de carne angus, queijo cheddar, alface, tomate e maionese em pão de brioche',
-    category: 'snacks',
+    category: Category.snacks,
   },
   {
     name: 'Bacon Bliss Burger',
@@ -23,7 +25,7 @@ const products = [
     price: 17.9,
     description:
       'Hambúrguer com queijo suíço, bacon, cebolas caramelizadas e molho barbecue em pão tostado.',
-    category: 'snacks',
+    category: Category.snacks,
   },
   {
     name: 'Vegetarian Delight Burger',
@@ -32,7 +34,7 @@ const products = [
     price: 15.9,
     description:
       'Hambúrguer vegetariano de quinoa e feijão preto, queijo de cabra, abacate e molho de iogurte em pão integral.',
-    category: 'snacks',
+    category: Category.snacks,
   },
   {
     name: 'Spicy Inferno Burger',
@@ -41,7 +43,7 @@ const products = [
     price: 22.9,
     description:
       ' Hambúrguer temperado, queijo pepper jack, jalapeños, cebolas roxas e molho Sriracha em pão de cebola.',
-    category: 'snacks',
+    category: Category.snacks,
   },
   {
     name: 'Mushroom Madness Burger',
@@ -50,7 +52,7 @@ const products = [
     price: 18.9,
     description:
       'Hambúrguer com cogumelos salteados, queijo suíço, rúcula e maionese trufada em pão de batata.',
-    category: 'snacks',
+    category: Category.snacks,
   },
   {
     name: 'Caprese Ciabatta',
@@ -59,7 +61,7 @@ const products = [
     price: 15.8,
     description:
       'Fatias de tomate fresco, queijo mozzarella, manjericão, regados com azeite de oliva e balsâmico, tudo servido em um pão ciabatta.',
-    category: 'snacks',
+    category: Category.snacks,
   },
   {
     name: 'Crispy Fish Fillet',
@@ -68,7 +70,7 @@ const products = [
     price: 19.9,
     description:
       'Filé de peixe empanado, queijo americano, molho tártaro e alface em um pão de baguete.',
-    category: 'snacks',
+    category: Category.snacks,
   },
   {
     name: 'Turkey Avocado Wrap',
@@ -77,7 +79,7 @@ const products = [
     price: 15.8,
     description:
       'Fatias de peito de peru, abacate, bacon, tomate e alface, envolvidos em uma tortilha de trigo integral.',
-    category: 'snacks',
+    category: Category.snacks,
   },
   {
     name: 'Pesto Veggie Delight',
@@ -86,7 +88,7 @@ const products = [
     price: 18.5,
     description:
       'Abobrinha grelhada, pimentão, cebola vermelha, queijo feta e molho pesto em um pão ciabatta.',
-    category: 'snacks',
+    category: Category.snacks,
   },
   {
     name: 'Coca cola zero 220 ml',
@@ -94,7 +96,7 @@ const products = [
       'https://images.unsplash.com/photo-1527960392543-80cd0fa46382?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvY2ElMjBjb2xhfGVufDB8fDB8fHww',
     price: 5.9,
     description: 'Coca cola zero açúcar 220 ml',
-    category: 'drinks',
+    category: Category.drinks,
   },
   {
     name: 'Coca cola',
@@ -102,7 +104,7 @@ const products = [
       'https://images.unsplash.com/photo-1527960392543-80cd0fa46382?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvY2ElMjBjb2xhfGVufDB8fDB8fHww',
     price: 5.9,
     description: 'Coca cola',
-    category: 'drinks',
+    category: Category.drinks,
   },
   {
     name: 'Suco de laranja',
@@ -110,7 +112,7 @@ const products = [
       'https://images.unsplash.com/photo-1577680716097-9a565ddc2007?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     price: 4.99,
     description: 'Suco natural de laranja geladinho',
-    category: 'drinks',
+    category: Category.drinks,
   },
   {
     name: 'Limonada',
@@ -118,7 +120,7 @@ const products = [
       'https://images.unsplash.com/photo-1575596510825-f748919a2bf7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGVtb25hZGV8ZW58MHx8MHx8fDA%3D',
     price: 5.9,
     description: 'Limonada bem gelada',
-    category: 'drinks',
+    category: Category.drinks,
   },
   {
     name: 'Chá Gelado',
@@ -126,7 +128,7 @@ const products = [
       'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2glQzMlQTElMjBnZWxhZG98ZW58MHx8MHx8fDA%3D',
     price: 4.9,
     description: 'Chá mate com gelo',
-    category: 'drinks',
+    category: Category.drinks,
   },
   {
     name: 'Batata frita',
@@ -134,7 +136,7 @@ const products = [
       'https://images.unsplash.com/photo-1612870424899-843e93e59ec4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGZyZW5jaCUyMGZyaWVzfGVufDB8fDB8fHww',
     price: 8.5,
     description: 'Porção de batata frita',
-    category: 'side_dishes',
+    category: Category.side_dishes,
   },
   {
     name: 'Anéis de cebola',
@@ -142,7 +144,7 @@ const products = [
       'https://images.unsplash.com/photo-1639024471283-03518883512d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YW4lQzMlQTlpcyUyMGRlJTIwY2Vib2xhfGVufDB8fDB8fHww',
     price: 8.5,
     description: 'Porção de anéis de cebola fritos',
-    category: 'side_dishes',
+    category: Category.side_dishes,
   },
   {
     name: 'Brownie Sundae',
@@ -151,7 +153,7 @@ const products = [
     price: 8.5,
     description:
       'Um pedaço generoso de brownie quente, coberto com uma bola de sorvete de baunilha, calda de chocolate, chantilly e uma pitada de nozes.',
-    category: 'desserts',
+    category: Category.desserts,
   },
   {
     name: 'Cheesecake de Morango',
@@ -160,7 +162,7 @@ const products = [
     price: 8.5,
     description:
       'Cheesecake cremoso com uma cobertura de geleia de morango fresca, servido em uma base de biscoito de chocolate',
-    category: 'desserts',
+    category: Category.desserts,
   },
   {
     name: 'Torta de Limão',
@@ -168,7 +170,7 @@ const products = [
       'https://www.doceriasaojose.com.br/estatico/doceriasaojose/images/produto/280-2.jpg?v=1529609112',
     price: 8.5,
     description: ' Fatias de torta de limão refrescante.',
-    category: 'desserts',
+    category: Category.desserts,
   },
   {
     name: 'Combo Vegetariano',
@@ -177,7 +179,7 @@ const products = [
     price: 30.5,
     description:
       '1 Vegetarian Delight Burger, 1 porção de batata frita, 1 pedaço de Cheesecake de Morango, 1 Suco de laranja',
-    category: 'combo',
+    category: Category.combo,
   },
   {
     name: 'Combo Classic Burger',
@@ -186,7 +188,7 @@ const products = [
     price: 35.4,
     description:
       '1 Classic Burger, 1 porção de Batata Frita, 1 Coca Cola, 1 Brownie Sundae.',
-    category: 'combo',
+    category: Category.combo,
   },
   {
     name: 'Combo Dupla Bacon',
@@ -195,7 +197,7 @@ const products = [
     price: 50.0,
     description:
       '2 hambúrgueres Bacon Bliss Burger, 2 refrigerantes Coca Cola e 2 porções de Batata Frita.',
-    category: 'combo',
+    category: Category.combo,
   },
 ];
 
