@@ -8,7 +8,7 @@ async function findAll() {
 
 async function findByName(name: string) {
   const products: Product[] = await prisma.product.findMany({
-    where: { name: { search: name, mode: 'insensitive' } },
+    where: { name: { contains: name, mode: 'insensitive' } },
   });
   return products;
 }
@@ -20,10 +20,18 @@ async function findByCategory(data: Category) {
   return products;
 }
 
+async function findById(id: number) {
+  const product: Product = await prisma.product.findFirst({
+    where: { id },
+  });
+  return product;
+}
+
 const productsRepository = {
   findAll,
   findByName,
   findByCategory,
+  findById,
 };
 
 export default productsRepository;

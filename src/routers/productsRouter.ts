@@ -4,6 +4,10 @@ import productsController from '../controllers/productsController';
 const productsRouter = Router();
 
 productsRouter.get('/', productsController.findAll);
-productsRouter.get('/:categoryName', productsController.findByCategory);
+productsRouter.get(
+  '/category/:categoryName',
+  productsController.findByCategory,
+);
+productsRouter.get('/search', productsController.findBySearchTerm);
 
 export default productsRouter;

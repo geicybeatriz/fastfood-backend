@@ -14,9 +14,16 @@ async function findByCategory(req: Request, res: Response) {
   res.status(200).send(products);
 }
 
+async function findBySearchTerm(req: Request, res: Response) {
+  const searchTerm = req.query.term as string;
+  const product: Product[] = await productsService.findBySearchTerm(searchTerm);
+  res.status(200).send(product);
+}
+
 const productsController = {
   findAll,
   findByCategory,
+  findBySearchTerm,
 };
 
 export default productsController;
