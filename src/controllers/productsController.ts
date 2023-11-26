@@ -20,10 +20,17 @@ async function findBySearchTerm(req: Request, res: Response) {
   res.status(200).send(product);
 }
 
+async function findById(req: Request, res: Response) {
+  const { id } = req.params;
+  const product = await productsService.findById(parseInt(id, 10));
+  res.status(200).send(product);
+}
+
 const productsController = {
   findAll,
   findByCategory,
   findBySearchTerm,
+  findById,
 };
 
 export default productsController;
