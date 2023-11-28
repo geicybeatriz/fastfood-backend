@@ -3,6 +3,7 @@ import { ProductsList } from '../interfaces/addProductInterface';
 import itemDetailsRepository from '../repositories/orderItemDetailsRepository';
 import orderAdditionalService from './additionalsServices';
 import productsService from './productsService';
+import { CustomError } from '../interfaces/errorInterface';
 
 export type CreateOrderItemDetails = Omit<OrderItemDetails, 'id'>;
 
@@ -54,9 +55,20 @@ async function createOrderItemDetails(data: ProductsList[], id: number) {
   return Number(totalPayment.toFixed(2));
 }
 
+async function findByOrderId(id: number) {
+  const orderItemsList: OrderItemDetails[] =
+    await itemDetailsRepository.findByOrderId(id);
+  if (!orderItemsList) {
+    // eslint-disable-next-line no-throw-literal
+    throw { type: 'not found', message: 'order not found' } as CustomError;
+  }
+  return orderItemsList;
+}
+
 const orderDetailsService = {
   createOrderItemDetails,
   saveOrderItemDetailsData,
+  findByOrderId,
 };
 
 export default orderDetailsService;

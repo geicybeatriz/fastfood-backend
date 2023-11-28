@@ -34,9 +34,44 @@ async function updateOrder(id: number, amount: number) {
 async function updateStatus(id: number, status: Status) {
   const order: Order = await prisma.order.update({
     where: { id },
-    data: status,
+    data: { status },
   });
   return order;
+}
+
+async function findOrdersDataExceptCancelledStatus() {
+  const orders: Order[] = await prisma.order.findMany({
+    where: {
+      NOT: { status: 'cancelled' },
+    },
+    include: {
+      itemDetails: {
+        include: {
+          product: true,
+          itemAdditional: {
+            include: {
+              additional: true,
+            },
+          },
+        },
+      },
+    },
+  });
+  return orders;
+}
+
+async function getUserByOrderStatus() {
+  const orders: Order[] = await prisma.order.findMany({
+    where: {
+      NOT: {
+        status: 'cancelled',
+      },
+    },
+    orderBy: {
+      updatedAt: 'asc',
+    },
+  });
+  return orders;
 }
 
 const ordersRepository = {
@@ -44,6 +79,8 @@ const ordersRepository = {
   findById,
   updateOrder,
   updateStatus,
+  findOrdersDataExceptCancelledStatus,
+  getUserByOrderStatus,
 };
 
 export default ordersRepository;
