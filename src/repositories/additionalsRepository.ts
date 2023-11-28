@@ -1,17 +1,21 @@
-import { OrderItemAdditionals } from '@prisma/client';
+import { Additional } from '@prisma/client';
 import prisma from '../config/database';
 
-async function create(additionalId: number, orderItemId: number) {
-  const itemAdditional: OrderItemAdditionals =
-    await prisma.orderItemAdditionals.create({
-      data: { additionalId, orderItemId },
-    });
+async function findAdditionalById(id: number) {
+  const additional: Additional = await prisma.additional.findFirst({
+    where: { id },
+  });
+  return additional;
+}
 
-  return itemAdditional;
+async function findAll() {
+  const additionals: Additional[] = await prisma.additional.findMany();
+  return additionals;
 }
 
 const additionalRepository = {
-  create,
+  findAdditionalById,
+  findAll,
 };
 
 export default additionalRepository;

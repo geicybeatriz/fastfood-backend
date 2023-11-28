@@ -1,15 +1,18 @@
 import Joi from 'joi';
 
-const addProductSchema = Joi.object({
-  orderId: Joi.number(),
-  productId: Joi.number().required(),
-  quantity: Joi.number().required(),
-  observations: Joi.string(),
-  additionals: Joi.array().items(Joi.number()),
+const orderSchema = Joi.object({
+  name: Joi.string().required,
+  payment: Joi.string().required,
+  productsList: Joi.array()
+    .items(
+      Joi.object({
+        productId: Joi.number().required(),
+        quantity: Joi.number().required(),
+        observations: Joi.string(),
+        additionals: Joi.array().items(Joi.number()),
+      }),
+    )
+    .min(1),
 });
 
-const orderSchemas = {
-  addProductSchema,
-};
-
-export default orderSchemas;
+export default orderSchema;
