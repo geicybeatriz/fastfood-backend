@@ -9,10 +9,13 @@ export type CreateOrderData = Omit<Order, 'id'>;
 async function createOrder(data: AddProductsOrderData) {
   const { name, payment, productsList } = data;
   const orderId: number = await ordersRepository.createOrder(name, payment);
+
   const orderItemsAmount: number =
     await orderDetailsService.createOrderItemDetails(productsList, orderId);
+
   await ordersRepository.updateOrder(orderId, orderItemsAmount);
-  return orderId;
+  const newOrder = await ordersRepository.getOrderDataById(orderId);
+  return newOrder;
 }
 
 async function checkOrderById(id: number) {

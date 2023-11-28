@@ -3,8 +3,8 @@ import { Request, Response } from 'express';
 import ordersService from '../services/ordersService';
 
 async function addProductOrder(req: Request, res: Response) {
-  await ordersService.createOrder(req.body);
-  res.sendStatus(201);
+  const order = await ordersService.createOrder(req.body);
+  res.status(201).send(order);
 }
 
 async function getAllOrdersExceptCancelledStatus(req: Request, res: Response) {

@@ -39,6 +39,39 @@ async function updateStatus(id: number, status: Status) {
   return order;
 }
 
+async function getOrderDataById(id: number) {
+  const order = await prisma.order.findFirst({
+    where: { id },
+    select: {
+      name: true,
+      id: true,
+      amount: true,
+      createdAt: true,
+      itemDetails: {
+        select: {
+          quantity: true,
+          observations: true,
+          product: {
+            select: {
+              name: true,
+            },
+          },
+          itemAdditional: {
+            select: {
+              additional: {
+                select: {
+                  name: true,
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  return order;
+}
+
 async function findOrdersDataExceptCancelledStatus() {
   const orders: Order[] = await prisma.order.findMany({
     where: {
@@ -81,6 +114,7 @@ const ordersRepository = {
   updateStatus,
   findOrdersDataExceptCancelledStatus,
   getUserByOrderStatus,
+  getOrderDataById,
 };
 
 export default ordersRepository;
