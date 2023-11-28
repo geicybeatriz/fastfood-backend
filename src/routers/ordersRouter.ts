@@ -7,7 +7,7 @@ const ordersRouter = Router();
 
 ordersRouter.post(
   '/',
-  schemasValidate(orderSchemas.addProductSchema),
+  schemasValidate(orderSchemas),
   ordersController.addProductOrder,
 );
 

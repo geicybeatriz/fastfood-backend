@@ -19,9 +19,18 @@ async function findByOrderItemId(id: number) {
   return additionals;
 }
 
+async function deleteByOrderItemId(id: number) {
+  await prisma.orderItemAdditionals.deleteMany({
+    where: {
+      orderItemId: id,
+    },
+  });
+}
+
 const orderAdditionalsRepository = {
   create,
   findByOrderItemId,
+  deleteByOrderItemId,
 };
 
 export default orderAdditionalsRepository;

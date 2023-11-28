@@ -1,9 +1,11 @@
-import { Order, Status } from '@prisma/client';
+import { $Enums, Order, Status } from '@prisma/client';
 import prisma from '../config/database';
 
-async function createOrder() {
+async function createOrder(name: string, payment: $Enums.Payment) {
   const order = await prisma.order.create({
     data: {
+      name,
+      payment,
       status: 'created',
       amount: 0.0,
     },
@@ -18,10 +20,13 @@ async function findById(id: number) {
   return order;
 }
 
-async function updateOrder(id: number, data: string) {
+async function updateOrder(id: number, amount: number) {
   const order: Order = await prisma.order.update({
     where: { id },
-    data,
+    data: {
+      amount,
+      status: 'preparing',
+    },
   });
   return order;
 }

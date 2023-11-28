@@ -1,10 +1,8 @@
 import { Request, Response } from 'express';
-import orderDetailsService from '../services/orderItemDetailsService';
+import ordersService from '../services/ordersService';
 
 async function addProductOrder(req: Request, res: Response) {
-  // eslint-disable-next-line no-console
-  console.log(req.body);
-  await orderDetailsService.createOrderItemDetails(req.body);
+  await ordersService.createOrder(req.body);
   res.sendStatus(201);
 }
 

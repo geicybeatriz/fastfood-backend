@@ -1,7 +1,14 @@
-export default interface AddProductsOrderData {
-  orderId: number;
+import { $Enums } from '@prisma/client';
+
+export interface AddProductsOrderData {
+  name: string;
+  payment: $Enums.Payment;
+  productsList: ProductsList[];
+}
+
+export interface ProductsList {
   productId: number;
-  observations: string;
   quantity: number;
+  observations: string;
   additionals: number[];
 }

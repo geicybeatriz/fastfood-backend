@@ -1,14 +1,14 @@
 import Joi from 'joi';
 
 const orderSchema = Joi.object({
-  name: Joi.string().required,
-  payment: Joi.string().required,
+  name: Joi.string().required(),
+  payment: Joi.string().required(),
   productsList: Joi.array()
     .items(
       Joi.object({
         productId: Joi.number().required(),
         quantity: Joi.number().required(),
-        observations: Joi.string(),
+        observations: Joi.string().allow(''),
         additionals: Joi.array().items(Joi.number()),
       }),
     )
