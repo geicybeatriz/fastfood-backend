@@ -21,9 +21,15 @@ async function findById(id: number) {
   return additional;
 }
 
+async function findAllAdditionals() {
+  const additionals: Additional[] = await additionalRepository.findAll();
+  return additionals;
+}
+
 const orderAdditionalService = {
   saveOrderAdditionals,
   findById,
+  findAllAdditionals,
 };
 
 export default orderAdditionalService;
