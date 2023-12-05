@@ -1,5 +1,5 @@
-import { getAllAdditionals } from 'controllers/additionalsControler';
 import { Router } from 'express';
+import { getAllAdditionals } from '../controllers/additionalsControler';
 
 const additionalRouter = Router();
 
